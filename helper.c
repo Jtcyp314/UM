@@ -154,83 +154,80 @@ int getRegValue(int reg)
 }
 
 //-------------------Start of instructions------------------------
-void cmov(uint32_t instruction)
+void cmov(Machine_T um, Um_word instruction)
 {
     if (getRegC(instruction) != 0) {
-        setReg(getRegValue(getRegB(instruction)), getRegA(instruction));
+        setReg(um, getRegValue(um, getRegB(instruction)), getRegA(instruction));
     }
 }
 
 
-void sload(uint32_t instruction)
+void sload(Machine_T um,Um_word instruction)
 {
     printf("sload\n");
 }
 
-void sstore(uint32_t instruction)
+void sstore(Machine_T um, Um_word instruction)
 {
     printf("sstore\n");
 }
 
 
-void add(uint32_t instruction)
+void add(Machine_T um, Um_word instruction)
 {
-    int digit1 = getRegValue(getRegB(instruction));
-    int digit2 = getRegValue(getRegC(instruction));
-    int sumReg = getRegA(instruction);
-    setReg( (digit1 + digit2), sumReg);
+    Um_word digit1 = getRegValue(um, getRegB(instruction));
+    Um_word digit2 = getRegValue(um, getRegC(instruction));
+    Um_word sumReg = getRegA(instruction);
+    setReg(um, (digit1 + digit2), sumReg);
 }
 
 
-void mul(uint32_t instruction)
+void mul(Machine_T um, Um_word instruction)
 {
-    int digit1 = getRegValue(getRegB(instruction));
-    int digit2 = getRegValue(getRegC(instruction));
-    int sumReg = getRegA(instruction);
-    setReg( (digit1 * digit2), sumReg);
+    Um_word digit1 = getRegValue(um, getRegB(instruction));
+    Um_word digit2 = getRegValue(um, getRegC(instruction));
+    Um_word sumReg = getRegA(instruction);
+    setReg(um, (digit1 * digit2), sumReg);
 }
-void divide(uint32_t instruction)
+void divide(Machine_T um, Um_word instruction)
 {
-    int digit1 = getRegValue(getRegB(instruction));
-    int digit2 = getRegValue(getRegC(instruction));
-    int sumReg = getRegA(instruction);
-    setReg( (digit1 / digit2), sumReg);
+    Um_word digit1 = getRegValue(um, getRegB(instruction));
+    Um_word digit2 = getRegValue(um, getRegC(instruction));
+    Um_word sumReg = getRegA(instruction);
+    setReg(um, (digit1 / digit2), sumReg);
 }
-void nand(uint32_t instruction)
+void nand(Machine_T um, Um_word instruction)
 {
-    int digit1 = getRegValue(getRegB(instruction));
-    int digit2 = getRegValue(getRegC(instruction));
-    int sumReg = getRegA(instruction);
-    setReg( ~(digit1 & digit2), sumReg);
+    Um_word digit1 = getRegValue(um, getRegB(instruction));
+    Um_word digit2 = getRegValue(um, getRegC(instruction));
+    Um_word sumReg = getRegA(instruction);
+    setReg(um, (~(digit1 & digit2)), sumReg);
 }
 
-void halt(uint32_t instruction)
-{
-    return;
-}
-void activate(uint32_t instruction)
+
+void activate(Machine_T um, Um_word instruction)
 {
     printf("activate\n");
 }
-void inactivate(uint32_t instruction)
+void inactivate(Machine_T um, Um_word instruction)
 {
     printf("inactivate\n");
 }
-void out(uint32_t instruction)
+void out(Machine_T um, Um_word instruction)
 {
-    uint32_t rc = getRegValue(getRegC(instruction));
+    Um_word rc = getRegValue(getRegC(instruction));
     assert(rc < 256 && rc > 0);
     printf("%d", rc);
 }
-void in(uint32_t instruction)
+void in(Machine_T um, Um_word instruction)
 {
     printf("in\n");
 }
-void loadp(uint32_t instruction)
+void loadp(Machine_T um, Um_word instruction)
 {
     printf("loadp\n");
 }
-void loadval(uint32_t instruction)
+void loadval(Machine_T um, Um_word instruction)
 {
     printf("loadval\n");
 }
