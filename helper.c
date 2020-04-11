@@ -154,24 +154,14 @@ int getRegValue(int reg)
 }
 
 //-------------------Start of instructions------------------------
+
+
 void cmov(Machine_T um, Um_word instruction)
 {
     if (getRegC(instruction) != 0) {
         setReg(um, getRegValue(um, getRegB(instruction)), getRegA(instruction));
     }
 }
-
-
-void sload(Machine_T um,Um_word instruction)
-{
-    printf("sload\n");
-}
-
-void sstore(Machine_T um, Um_word instruction)
-{
-    printf("sstore\n");
-}
-
 
 void add(Machine_T um, Um_word instruction)
 {
@@ -205,6 +195,20 @@ void nand(Machine_T um, Um_word instruction)
 }
 
 
+
+
+//---------------------------NOT YET IMPLEMENTED DUE TO NEED FOR SEQUENCE---------------------------
+
+
+void sload(Machine_T um,Um_word instruction)
+{
+    printf("sload\n");
+}
+
+void sstore(Machine_T um, Um_word instruction)
+{
+    printf("sstore\n");
+}
 void activate(Machine_T um, Um_word instruction)
 {
     printf("activate\n");
