@@ -209,20 +209,15 @@ void sstore(Machine_T um, Um_word instruction)
 {
     printf("sstore\n");
 }
-void activate(Machine_T um, Um_word instruction)
+void map(Machine_T um, Um_word instruction)
 {
     printf("activate\n");
 }
-void inactivate(Machine_T um, Um_word instruction)
+void unmap(Machine_T um, Um_word instruction)
 {
     printf("inactivate\n");
 }
-void out(Machine_T um, Um_word instruction)
-{
-    Um_word rc = getRegValue(getRegC(instruction));
-    assert(rc < 256 && rc > 0);
-    printf("%d", rc);
-}
+
 void in(Machine_T um, Um_word instruction)
 {
     printf("in\n");
@@ -230,6 +225,19 @@ void in(Machine_T um, Um_word instruction)
 void loadp(Machine_T um, Um_word instruction)
 {
     printf("loadp\n");
+}
+
+
+
+
+
+//------------------------------already done-------------------
+
+void out(Machine_T um, Um_word instruction)
+{
+    Um_word rc = getRegValue(getRegC(instruction));
+    assert(rc < 256 && rc > 0);
+    printf("%d", rc);
 }
 void loadval(Machine_T um, Um_word instruction)
 {
